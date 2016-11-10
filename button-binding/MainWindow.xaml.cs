@@ -39,21 +39,20 @@ namespace button_binding
 			};
 		}
 
-		private class Vm
+		public class cVm : INotifyPropertyChanged
 		{
-			public abstract class ObservableObject : INotifyPropertyChanged
-			{
-				public event PropertyChangedEventHandler PropertyChanged;
+			private static cVm _instance;
 
-				protected virtual void OnPropertyChanged ([CallerMemberName] string propName = "")
-				{
-					var pc = PropertyChanged;
-					if (pc != null)
-						pc(this, new PropertyChangedEventArgs(propName));
-				}
+			public event PropertyChangedEventHandler PropertyChanged;
+
+			protected virtual void OnPropertyChanged<T> (T control, [CallerMemberName] string propName = "")
+			{
+				var pc = PropertyChanged;
+				if (pc != null)
+					pc(control, new PropertyChangedEventArgs(propName));
 			}
 
-			public class ObservableButton : ObservableObject
+			public class ObservableButton
 			{
 				private readonly Button _b;
 				private readonly List<string> _options;
@@ -66,7 +65,7 @@ namespace button_binding
 					{
 						if (_content == value) return;
 						_content = value;
-						OnPropertyChanged();
+						_instance.OnPropertyChanged(this);
 					}
 				}
 
@@ -88,7 +87,7 @@ namespace button_binding
 
 			}
 
-			public class ObservableToggleButton : ObservableObject
+			public class ObservableToggleButton
 			{
 				private readonly ToggleButton _b;
 				private readonly List<string> _options;
@@ -101,7 +100,7 @@ namespace button_binding
 					{
 						if (_content == value) return;
 						_content = value;
-						OnPropertyChanged();
+						_instance.OnPropertyChanged(this);
 					}
 				}
 
@@ -113,7 +112,7 @@ namespace button_binding
 					{
 						if (_on == value) return;
 						_on = value;
-						Content = _b.IsChecked ?? false ? _options[0] : _options[1];
+						Content = value ? _options[0] : _options[1];
 					}
 				}
 
@@ -143,8 +142,9 @@ namespace button_binding
 
 			public ObservableToggleButton Button2 { get; set; }
 
-			public Vm ()
+			public cVm ()
 			{
+				_instance = this;
 			}
 		}
 	}
