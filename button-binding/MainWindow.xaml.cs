@@ -27,21 +27,19 @@ namespace button_binding
 	{
 		public static MainWindow Instance;
 
-		private readonly cVm _vm;
-
 		public MainWindow ()
 		{
 			InitializeComponent();
-			DataContext = _vm = new cVm
+			DataContext = new ViewModel
 			{
-				Button1 = new cVm.ObservableButton(button1, new List<string> { "Paused", "Logging" }, false),
-				Button2 = new cVm.ObservableToggleButton(button2, new List<string> { "Log All", "Log VBA" }, false),
+				Button1 = new ViewModel.ObservableButton(button1, new List<string> { "Paused", "Logging" }, false),
+				Button2 = new ViewModel.ObservableToggleButton(button2, new List<string> { "Log All", "Log VBA" }, false),
 			};
 		}
 
-		public class cVm : INotifyPropertyChanged
+		public class ViewModel : INotifyPropertyChanged
 		{
-			private static cVm _instance;
+			private static ViewModel _instance;
 
 			public event PropertyChangedEventHandler PropertyChanged;
 
@@ -52,8 +50,11 @@ namespace button_binding
 					pc(control, new PropertyChangedEventArgs(propName));
 			}
 
-			public class ObservableButton
+			public class ObservableButton : INotifyPropertyChanged
 			{
+				public event PropertyChangedEventHandler PropertyChanged;
+				protected virtual void OnPropertyChanged () {}
+
 				private readonly Button _b;
 				private readonly List<string> _options;
 
@@ -87,8 +88,11 @@ namespace button_binding
 
 			}
 
-			public class ObservableToggleButton
+			public class ObservableToggleButton : INotifyPropertyChanged
 			{
+				public event PropertyChangedEventHandler PropertyChanged;
+				protected virtual void OnPropertyChanged () {}
+
 				private readonly ToggleButton _b;
 				private readonly List<string> _options;
 
@@ -123,26 +127,14 @@ namespace button_binding
 					On = on;
 					Content = _b.IsChecked ?? false ? _options[0] : _options[1];
 				}
-				public void Click (object sender, RoutedEventArgs e)
-				{
-					On = !On;
-					Content = On ? _options[0] : _options[1];
-				}
 
-				public void Push ()
-				{
-					var peer = new ToggleButtonAutomationPeer(_b);
-					var toggleProvider = peer.GetPattern(PatternInterface.Toggle) as IToggleProvider;
-					if (toggleProvider != null) toggleProvider.Toggle();
-					//On = !On;
-				}
 			}
 
 			public ObservableButton Button1 { get; set; }
 
 			public ObservableToggleButton Button2 { get; set; }
 
-			public cVm ()
+			public ViewModel ()
 			{
 				_instance = this;
 			}
