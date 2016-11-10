@@ -50,11 +50,8 @@ namespace button_binding
 					pc(control, new PropertyChangedEventArgs(propName));
 			}
 
-			public class ObservableButton : INotifyPropertyChanged
+			public class ObservableButton
 			{
-				public event PropertyChangedEventHandler PropertyChanged;
-				protected virtual void OnPropertyChanged () {}
-
 				private readonly Button _b;
 				private readonly List<string> _options;
 
@@ -88,11 +85,8 @@ namespace button_binding
 
 			}
 
-			public class ObservableToggleButton : INotifyPropertyChanged
+			public class ObservableToggleButton
 			{
-				public event PropertyChangedEventHandler PropertyChanged;
-				protected virtual void OnPropertyChanged () {}
-
 				private readonly ToggleButton _b;
 				private readonly List<string> _options;
 
