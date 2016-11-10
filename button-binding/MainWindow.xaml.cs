@@ -27,15 +27,15 @@ namespace button_binding
 	{
 		public static MainWindow Instance;
 
-		private readonly cVm _vm;
+		private readonly Vm _vm;
 
 		public MainWindow ()
 		{
 			InitializeComponent();
-			DataContext = _vm = new cVm
+			DataContext = _vm = new Vm
 			{
-				Button1 = new cVm.ObservableButton(button1, new List<string> { "Paused", "Logging" }, false),
-				Button2 = new cVm.ObservableToggleButton(button2, new List<string> { "Log All", "Log VBA" }, false),
+				Button1 = new Vm.ObservableButton(button1, new List<string> { "Paused", "Logging" }, false),
+				Button2 = new Vm.ObservableToggleButton(button2, new List<string> { "Log All", "Log VBA" }, false),
 			};
 		}
 
@@ -113,7 +113,7 @@ namespace button_binding
 					{
 						if (_on == value) return;
 						_on = value;
-						Content = _b.IsChecked ?? false ? _options[0] : _options[1];
+						Content = value ? _options[0] : _options[1];
 					}
 				}
 
