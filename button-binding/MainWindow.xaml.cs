@@ -112,18 +112,11 @@ namespace button_binding
 					On = on;
 					Content = _b.IsChecked ?? false ? _options[0] : _options[1];
 				}
-				public void Click (object sender, RoutedEventArgs e)
-				{
-					On = !On;
-					Content = On ? _options[0] : _options[1];
-				}
-
 				public void Push ()
 				{
 					var peer = new ToggleButtonAutomationPeer(_b);
 					var toggleProvider = peer.GetPattern(PatternInterface.Toggle) as IToggleProvider;
 					if (toggleProvider != null) toggleProvider.Toggle();
-					//On = !On;
 				}
 			}
 
