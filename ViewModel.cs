@@ -1,4 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 public class Vm
 {
@@ -94,7 +102,7 @@ public class Vm
 
 	public ObservableToggleButton Button2 { get; set; }
 
-	public Vm ()
+	public Vm (Button button, ToggleButton togglebutton)
 	{
 	}
 }
