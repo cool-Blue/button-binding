@@ -61,7 +61,7 @@ namespace ObservableControls
 	/// need to add a command or a binding to drive On
 	/// On drives Content
 	/// </summary>
-	public abstract class ObservableButtonBase : ObservableObject
+	public abstract class ObservableButtonBase : ObservableObjectBase
 	{
 		public List<string> Options { get; set; }
 
@@ -72,9 +72,7 @@ namespace ObservableControls
 			get { return _content; }
 			set
 			{
-				if (_content == value) return;
-				_content = value;
-				OnPropertyChanged();
+				SetProperty(ref _content, value);
 			}
 		}
 
@@ -93,22 +91,22 @@ namespace ObservableControls
 	/// </summary>
 	public class DelegateCommand : ICommand
 	{
-		public bool CanExecute(object parameter)
+		public bool CanExecute(Object parameter)
 		{
 			return true;
 		}
 
 		private readonly Action<Object> _execute;
-		public void Execute(object parameter)
+		public void Execute(Object parameter)
 		{
-			_execute(parameter);
+			_execute((Object) parameter);
 		}
 
 		public event EventHandler CanExecuteChanged;
 
-		public DelegateCommand(Action<Object> ex)
+		public DelegateCommand(Action<Object> execute)
 		{
-			_execute = ex;
+			_execute = execute;
 		}
 	}
 

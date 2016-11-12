@@ -21,7 +21,7 @@ namespace button_binding
 		}
 
 		/// <summary>
-		/// Contains pure view state and intra-view actions
+		/// Contains pure view state and UI behaviour
 		/// has no references to the view, it's bound to by the XAML View
 		/// </summary>
 		public class View
