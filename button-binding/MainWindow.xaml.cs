@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
+using System.Windows.Data;
 using ButtonBindingViewModel;
 using ObservableControls;
 
@@ -30,6 +33,33 @@ namespace button_binding
 			// build the view model and connect it to the view
 			DataContext = new ViewModel(button2);
 		}
+	}
+}
 
+namespace converters
+{
+	public class ResourceDictionaryMembersToString : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			return value.ToString();
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			throw new NotImplementedException();
+		}
+	}
+	public class NoOpConverter : IValueConverter
+	{
+		public object Convert (object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			return value;
+		}
+
+		public object ConvertBack (object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			return value;
+		}
 	}
 }
