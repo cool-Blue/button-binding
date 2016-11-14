@@ -13,6 +13,14 @@ namespace button_binding
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		//public static readonly DependencyProperty Button0Property =
+		//	DependencyProperty.Register("Button0", typeof(ObservableButton), typeof(MainWindow));
+		//public ObservableButton Button0
+		//{
+		//	get { return (ObservableButton)GetValue(Button0Property); }
+		//	set { SetValue(Button0Property, value); }
+		//}
+
 		public ObservableButton Button0 { get; set; }
 		public ObservableButton Button1 { get; set; }
 		public ObservableToggleButton Button2 { get; set; }

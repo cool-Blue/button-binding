@@ -1,18 +1,14 @@
 ﻿<Window x:Class="button_binding.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:c="clr-namespace:converters"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <RelativeSource x:Key="View" Mode="FindAncestor" AncestorType="{x:Type Window}"></RelativeSource>
-        <RelativeSource x:Key="View2" Mode="Self"></RelativeSource>
-        <c:ResourceDictionaryMembersToString x:Key="ToString"/>
-        <c:NoOpConverter x:Key="NoOp"/>
     </Window.Resources>
     <Grid Margin="0,0,183,134">
         <Button x:Name="button0" 
                 Command="{Binding Button0.DelegateClick, RelativeSource={StaticResource View}}" 
-                Content="{Binding Button0.Content, RelativeSource={StaticResource View}, Converter={StaticResource NoOp}}" 
+                Content="{Binding Button0.Content, RelativeSource={StaticResource View}}" 
                 HorizontalAlignment="Left" Margin="112,82,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="button1" Command="{Binding Button1.DelegateClick, RelativeSource={StaticResource View}}" 
                 Content="{Binding Button1.Content, RelativeSource={StaticResource View}}" 
@@ -22,6 +18,5 @@
                 HorizontalAlignment="Left" Margin="213,134,0,0" VerticalAlignment="Top"/>
         <Button Content="MODEL" Command="{Binding TargetButton.Push}" HorizontalAlignment="Left" 
                 Margin="273,86,-14,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock Text="{Binding RelativeSource={StaticResource View2}, Converter={StaticResource ToString}}" HorizontalAlignment="Left" Margin="33,235,-140,-100" VerticalAlignment="Top" Width="441" Height="50" Background="#FFC17979"/>
     </Grid>
 </Window>
