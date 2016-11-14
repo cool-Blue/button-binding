@@ -5,18 +5,21 @@
     <Window.Resources>
         <RelativeSource x:Key="View" Mode="FindAncestor" AncestorType="{x:Type Window}"></RelativeSource>
     </Window.Resources>
-    <Grid Margin="0,0,183,134">
-        <Button x:Name="button0" 
-                Command="{Binding Button0.DelegateClick, RelativeSource={StaticResource View}}" 
-                Content="{Binding Button0.Content, RelativeSource={StaticResource View}}" 
-                HorizontalAlignment="Left" Margin="112,82,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="button1" Command="{Binding Button1.DelegateClick, RelativeSource={StaticResource View}}" 
-                Content="{Binding Button1.Content, RelativeSource={StaticResource View}}" 
-                HorizontalAlignment="Left" Margin="112,134,0,0" VerticalAlignment="Top" Width="75"/>
-        <ToggleButton Name="button2" IsChecked="{Binding Button2.On, RelativeSource={StaticResource View}, Mode=OneWayToSource}" 
-                Content="{Binding Button2.Content, RelativeSource={StaticResource View}}" 
-                HorizontalAlignment="Left" Margin="213,134,0,0" VerticalAlignment="Top"/>
-        <Button Content="MODEL" Command="{Binding TargetButton.Push}" HorizontalAlignment="Left" 
-                Margin="273,86,-14,0" VerticalAlignment="Top" Width="75"/>
-    </Grid>
+    <StackPanel>
+        <StackPanel Margin="100,100,100,3" Orientation="Vertical" HorizontalAlignment="Center">
+            <Button x:Name="button0"
+                    Command="{Binding Button0.DelegateClick, RelativeSource={StaticResource View}}"
+                    Content="{Binding Button0.Content, RelativeSource={StaticResource View}}"
+                    HorizontalAlignment="Left" Margin="3,3,3,3" VerticalAlignment="Top" Width="75" />
+            <Button x:Name="button1" Command="{Binding Button1.DelegateClick, RelativeSource={StaticResource View}}"
+                    Content="{Binding Button1.Content, RelativeSource={StaticResource View}}"
+                    HorizontalAlignment="Left" Margin="3,3,3,3" VerticalAlignment="Top" Width="75" />
+            <ToggleButton Name="button2"
+                          IsChecked="{Binding Button2.On, RelativeSource={StaticResource View}, Mode=OneWayToSource}"
+                          Content="{Binding Button2.Content, RelativeSource={StaticResource View}}"
+                          HorizontalAlignment="Center" Margin="3,3,3,3" VerticalAlignment="Top" />
+        </StackPanel>
+        <Button Content="MODEL" Command="{Binding TargetButton.Push}" HorizontalAlignment="Center"
+                VerticalAlignment="Top" Width="75" />
+    </StackPanel>
 </Window>
