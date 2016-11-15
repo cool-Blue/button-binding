@@ -131,4 +131,10 @@ namespace ObservableControls
 			Push = new DelegateCommand(_push);
 		}
 	}
+
+	public enum State
+	{
+		Pressed,
+		Released
+	}
 }
