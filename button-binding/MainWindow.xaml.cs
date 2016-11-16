@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -13,14 +14,6 @@ namespace button_binding
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		//public static readonly DependencyProperty Button0Property =
-		//	DependencyProperty.Register("Button0", typeof(ObservableButton), typeof(MainWindow));
-		//public ObservableButton Button0
-		//{
-		//	get { return (ObservableButton)GetValue(Button0Property); }
-		//	set { SetValue(Button0Property, value); }
-		//}
-
 		public ObservableButton Button0 { get; set; }
 		public ObservableButton Button1 { get; set; }
 		public ObservableToggleButton Button2 { get; set; }
@@ -60,12 +53,34 @@ namespace converters
 	}
 	public class NoOpConverter : IValueConverter
 	{
-		public object Convert (object value, Type targetType, object parameter, CultureInfo culture)
+		public object Convert (object value, Type targetType, object parameter, 
+			CultureInfo culture)
 		{
-			return value;
+			// obtain the conveter for the target type
+			TypeConverter converter = TypeDescriptor.GetConverter(targetType);
+
+			try
+			{
+				// determine if the supplied value is of a suitable type
+				if (converter.CanConvertFrom(value.GetType()))
+				{
+					// return the converted value
+					return converter.ConvertFrom(value);
+				}
+				else
+				{
+					// try to convert from the string representation
+					return converter.ConvertFrom(value.ToString());
+				}
+			}
+			catch (Exception)
+			{
+				return value;
+			}
 		}
 
-		public object ConvertBack (object value, Type targetType, object parameter, CultureInfo culture)
+		public object ConvertBack (object value, Type targetType, object parameter, 
+			CultureInfo culture)
 		{
 			return value;
 		}
