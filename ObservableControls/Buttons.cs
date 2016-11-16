@@ -9,80 +9,15 @@ using System.Windows.Input;
 namespace ObservableControls
 {
 	
-	/// <summary>
-	/// adds an ICommand delegate binding for a button
-	/// </summary>
-	public class ObservableButton : ObservableButtonBase
-	{
-		public new Boolean On { set; private get; }
-
-		public ObservableButton (List<string> options, Boolean on = true)
-			: base(options, on)
-		{
-			DelegateClick = new DelegateCommand(_click);
-		}
-
-		void _click (object sender)
-		{
-			On = !On;
-			Content = On ? Options[0] : Options[1];
-		}
-
-		public DelegateCommand DelegateClick { get; private set; }
-
-	}
-
-	/// <summary>
-	/// Adds On binding for a target togglebutton
-	/// </summary>
-	public class ObservableToggleButton : ObservableButtonBase
-	{
-		private Boolean _on;
-
-		public new Boolean On
-		{
-			private get { return _on; }
-			set
-			{
-				if (_on == value) return;
-				_on = value;
-				Content = value ? Options[0] : Options[1];
-			}
-		}
-
-		public ObservableToggleButton(List<string> options, Boolean on = true)
-			: base(options, on) { }
-
-	}
-
-	/// <summary>
-	/// Toggles Content between two values in options
-	/// Exposes On and Content for binding to the view
-	/// need to add a command or a binding to drive On
-	/// On drives Content
-	/// </summary>
-	public abstract class ObservableButtonBase : ObservableObjectBase
+	public class StaticButton
 	{
 		public List<string> Options { get; set; }
+		public bool InitialState { get; set; }
 
-		private string _content;
-
-		public string Content
-		{
-			get { return _content; }
-			set
-			{
-				SetProperty(ref _content, value);
-			}
-		}
-
-		public Boolean On { set; private get; }
-
-		protected ObservableButtonBase (List<string> options, Boolean on = true)
+		public StaticButton (List<string> options, bool state0)
 		{
 			Options = options;
-			On = on;
-			Content = On ? Options[0] : Options[1];
+			InitialState = state0;
 		}
 	}
 
@@ -91,20 +26,20 @@ namespace ObservableControls
 	/// </summary>
 	public class DelegateCommand : ICommand
 	{
-		public bool CanExecute(Object parameter)
+		public bool CanExecute(object parameter)
 		{
 			return true;
 		}
 
-		private readonly Action<Object> _execute;
-		public void Execute(Object parameter)
+		private readonly Action<object> _execute;
+		public void Execute(object parameter)
 		{
-			_execute((Object) parameter);
+			_execute(parameter);
 		}
 
 		public event EventHandler CanExecuteChanged;
 
-		public DelegateCommand(Action<Object> execute)
+		public DelegateCommand(Action<object> execute)
 		{
 			_execute = execute;
 		}
@@ -115,7 +50,7 @@ namespace ObservableControls
 	/// </summary>
 	public class ToggleAutomation
 	{
-		private void _push (Object o)
+		private void _push (object o)
 		{
 			var peer = new ToggleButtonAutomationPeer(_tb);
 			var toggleProvider = peer.GetPattern(PatternInterface.Toggle) as IToggleProvider;

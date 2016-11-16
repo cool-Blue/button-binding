@@ -41,40 +41,7 @@
         <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
         <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
-        <ControlTemplate x:Key="ButtonBaseControlTemplate1" TargetType="{x:Type ButtonBase}">
-            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
-                    Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" 
-                                  ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" 
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" 
-                                  RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="Button.IsDefaulted" Value="True">
-                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background.custom}"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
-                </Trigger>
-                <Trigger Property="IsPressed" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
-                </Trigger>
-                <Trigger Property="ToggleButton.IsChecked" Value="True">
-                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Checked.Background.custom}"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Static.Border}"/>
-                </Trigger>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-
-        <ControlTemplate x:Key="ToggleControlTemplate1" TargetType="{x:Type ToggleButton}">
+        <ControlTemplate x:Key="ToggleControlTemplate1" TargetType="{x:Type ButtonBase}">
             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" 
                     BorderThickness="{TemplateBinding BorderThickness}" 
                     Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
@@ -109,7 +76,7 @@
                             Value="{StaticResource Button.Checked.Background.custom}"/>
                     <Setter Property="BorderBrush" TargetName="border" 
                             Value="{StaticResource Button.Static.Border}"/>
-                    <Setter TargetName="contentPresenter" Property="ContentPresenter.Content" 
+                    <Setter TargetName="contentPresenter" Property="ContentPresenter.Content"
                             Value="{Binding Content[0], RelativeSource={RelativeSource TemplatedParent}}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
@@ -120,46 +87,45 @@
                     <Setter Property="TextElement.Foreground" TargetName="contentPresenter" 
                             Value="{StaticResource Button.Disabled.Foreground}"/>
                 </Trigger>
+                
+                <!-- Toggle content based on state -->
                 <Trigger Property="ToggleButton.IsChecked" Value="False">
                     <Setter TargetName="contentPresenter" Property="ContentPresenter.Content"
                             Value="{Binding Content[1], RelativeSource={RelativeSource TemplatedParent}}" />
                 </Trigger>
+                
             </ControlTemplate.Triggers>
         </ControlTemplate>
-
         <Style x:Key="buttons" TargetType="{x:Type ButtonBase}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Button.Background" Value="{StaticResource Button.Static.Background.custom}"/>
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="1"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="3,3,3,3"/>
-            <Setter Property="MinWidth" Value="80"/>
             <Setter Property="Height" Value="20"/>
-            <Setter Property="Template" Value="{StaticResource ButtonBaseControlTemplate1}"/>
+            <Setter Property="Template" Value="{StaticResource ToggleControlTemplate1}"></Setter>
         </Style>
     </Window.Resources>
     <StackPanel>
-        <StackPanel Margin="100,100,100,0" Orientation="Vertical" HorizontalAlignment="Center">
-            <Button x:Name="button0"
-                    Command="{Binding Button0.DelegateClick, RelativeSource={StaticResource View}}"
-                    Content="{Binding Button0.Content, RelativeSource={StaticResource View}}"
-                    Style="{StaticResource buttons}" >
-            </Button>
-            <Button x:Name="button1" Command="{Binding Button1.DelegateClick, RelativeSource={StaticResource View}}"
-                    Content="{Binding Button1.Content, RelativeSource={StaticResource View}}"
+        <StackPanel Margin="100,100,100,0" Orientation="Vertical" HorizontalAlignment="Stretch">
+            <ToggleButton x:Name="button0"
+                    Content="{Binding Button0.Options, RelativeSource={StaticResource View}}"
+                    Style="{StaticResource buttons}" />
+            <ToggleButton x:Name="button1" 
+                    Content="{Binding Button1.Options, RelativeSource={StaticResource View}}"
                     Style="{StaticResource buttons}" />
             <ToggleButton Name="button2"
-                    IsChecked="{Binding Button2.On, RelativeSource={StaticResource View}, Mode=OneWayToSource}"
-                    Content="{Binding Button2.Content, RelativeSource={StaticResource View}}"
+                    Content="{Binding Button2.Options, RelativeSource={StaticResource View}}"
+                    Style="{StaticResource buttons}" />
+            <Button Content="{Binding ModelButton.Options, RelativeSource={StaticResource View}}" 
+                    Command="{Binding TargetButton.Push}"  
                     Style="{StaticResource buttons}" />
         </StackPanel>
-        <Button Content="MODEL" Command="{Binding TargetButton.Push}"  Style="{StaticResource buttons}" />
     </StackPanel>
 </Window>
     

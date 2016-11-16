@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
 using ButtonBindingViewModel;
 using ObservableControls;
@@ -12,11 +11,12 @@ namespace button_binding
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class MainWindow
 	{
-		public ObservableButton Button0 { get; set; }
-		public ObservableButton Button1 { get; set; }
-		public ObservableToggleButton Button2 { get; set; }
+		public StaticButton Button0 { get; set; }
+		public StaticButton Button1 { get; set; }
+		public StaticButton Button2 { get; set; }
+		public StaticButton ModelButton { get; set; }
 
 		/// <summary>
 		/// Contains pure view state and UI behaviour
@@ -25,9 +25,10 @@ namespace button_binding
 		public MainWindow ()
 		{
 			// build the view
-			Button0 = new ObservableButton(new List<string> { "Paused", "Logging" }, false);
-			Button1 = new ObservableButton(new List<string> { "Paused", "Logging" }, false);
-			Button2 = new ObservableToggleButton(new List<string> { "Log All", "Log VBA" }, false);
+			Button0 = new StaticButton(new List<string> { "Paused", "Logging" }, false);
+			Button1 = new StaticButton(new List<string> { "Paused", "Logging" }, false);
+			Button2 = new StaticButton(new List<string> { "Log All", "Log VBA" }, false);
+			ModelButton = new StaticButton(new List<string> { "MODEL", "MODEL" }, false);
 
 			InitializeComponent();
 
