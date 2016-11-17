@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Binding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\WPF\Class Lib\Binding\bin\Release\Binding.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -97,10 +101,6 @@
     <Folder Include="Themes\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Binding\Binding.csproj">
-      <Project>{a09d71c0-623d-469a-86f0-aa8df97b41dc}</Project>
-      <Name>Binding</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ObservableControls\ObservableControls.csproj">
       <Project>{98aa57a2-f6e3-443b-b5a2-252b293471c8}</Project>
       <Name>ObservableControls</Name>
