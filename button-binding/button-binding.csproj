@@ -40,7 +40,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -98,6 +97,10 @@
     <Folder Include="Themes\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Binding\Binding.csproj">
+      <Project>{a09d71c0-623d-469a-86f0-aa8df97b41dc}</Project>
+      <Name>Binding</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ObservableControls\ObservableControls.csproj">
       <Project>{98aa57a2-f6e3-443b-b5a2-252b293471c8}</Project>
       <Name>ObservableControls</Name>
