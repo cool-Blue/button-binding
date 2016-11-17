@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace ObservableControls
@@ -8,19 +7,18 @@ namespace ObservableControls
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		protected virtual Boolean SetProperty<T>(ref T backingMember, T value, 
+		protected virtual bool SetProperty<T>(ref T backingMember, T value, 
 			[CallerMemberName] string propName = "")
 		{
-			if (Object.Equals(backingMember, value)) return false;
+			if (Equals(backingMember, value)) return false;
 
 			backingMember = value;
-			this.OnPropertyChanged(propName);
+			OnPropertyChanged(propName);
 			return true;
 
 		}
 
-		protected virtual void OnPropertyChanged (
-			[CallerMemberName] string propName = "")
+		protected virtual void OnPropertyChanged (string propName)
 		{
 			var pc = PropertyChanged;
 			if (pc != null)

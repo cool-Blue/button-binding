@@ -1,17 +1,17 @@
 ﻿using System.Windows.Controls.Primitives;
 using ObservableControls;
 
-namespace ButtonBindingViewModel
+namespace ViewModel
 {
 	/// <summary>
 	/// mock model
 	/// This is a remote control interface bound to a button on the view
 	/// </summary>
-	public class ViewModel
+	public class VM
 	{
 		public ToggleAutomation TargetButton { get; set; }
 
-		public ViewModel (ToggleButton tb)
+		public VM (ToggleButton tb)
 		{
 			TargetButton = new ToggleAutomation(tb);
 		}

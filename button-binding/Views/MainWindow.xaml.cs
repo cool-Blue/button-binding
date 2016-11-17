@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
-using ButtonBindingViewModel;
+using button_binding.ViewModels;
 using ObservableControls;
 
-namespace button_binding
+namespace button_binding.Views
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
@@ -31,35 +31,8 @@ namespace button_binding
 			InitializeComponent();
 
 			// build the view model and connect it to the view
-			DataContext = new ViewModel(button2);
+			DataContext = new MainViewModel(button2);
 		}
 	}
-}
 
-namespace converters
-{
-	public class ResourceDictionaryMembersToString : IValueConverter
-	{
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			return value.ToString();
-		}
-
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			throw new NotImplementedException();
-		}
-	}
-	public class NoOpConverter : IValueConverter
-	{
-		public object Convert (object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			return value;
-		}
-
-		public object ConvertBack (object value, Type targetType, object parameter, CultureInfo culture)
-		{
-			return value;
-		}
-	}
 }

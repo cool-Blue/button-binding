@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Automation.Peers;
-using System.Windows.Automation.Provider;
-using System.Windows.Controls.Primitives;
-using System.Windows.Input;
+﻿using System.Collections.Generic;
+using ControlAutomation;
 
 
 namespace ObservableControls
@@ -14,15 +10,15 @@ namespace ObservableControls
 	/// </summary>
 	public class ObservableButton : ObservableButtonBase
 	{
-		public new Boolean On { set; private get; }
+		public new bool On { set; private get; }
 
-		public ObservableButton (List<string> options, Boolean on = true)
+		public ObservableButton (List<string> options, bool on = true)
 			: base(options, on)
 		{
 			DelegateClick = new DelegateCommand(_click);
 		}
 
-		void _click (object sender)
+		private void _click (object sender)
 		{
 			On = !On;
 			Content = On ? Options[0] : Options[1];
@@ -37,11 +33,10 @@ namespace ObservableControls
 	/// </summary>
 	public class ObservableToggleButton : ObservableButtonBase
 	{
-		private Boolean _on;
+		private bool _on;
 
-		public new Boolean On
+		public new bool On
 		{
-			private get { return _on; }
 			set
 			{
 				if (_on == value) return;
@@ -50,7 +45,7 @@ namespace ObservableControls
 			}
 		}
 
-		public ObservableToggleButton(List<string> options, Boolean on = true)
+		public ObservableToggleButton(List<string> options, bool on = true)
 			: base(options, on) { }
 
 	}
@@ -76,9 +71,9 @@ namespace ObservableControls
 			}
 		}
 
-		public Boolean On { set; private get; }
+		public bool On { set; private get; }
 
-		protected ObservableButtonBase (List<string> options, Boolean on = true)
+		protected ObservableButtonBase (List<string> options, bool on = true)
 		{
 			Options = options;
 			On = on;
@@ -86,49 +81,4 @@ namespace ObservableControls
 		}
 	}
 
-	/// <summary>
-	/// Wraps an Action delegate in an ICommand 
-	/// </summary>
-	public class DelegateCommand : ICommand
-	{
-		public bool CanExecute(Object parameter)
-		{
-			return true;
-		}
-
-		private readonly Action<Object> _execute;
-		public void Execute(Object parameter)
-		{
-			_execute((Object) parameter);
-		}
-
-		public event EventHandler CanExecuteChanged;
-
-		public DelegateCommand(Action<Object> execute)
-		{
-			_execute = execute;
-		}
-	}
-
-	/// <summary>
-	/// provides an automation object bound to a ToggleButton
-	/// </summary>
-	public class ToggleAutomation
-	{
-		private void _push (Object o)
-		{
-			var peer = new ToggleButtonAutomationPeer(_tb);
-			var toggleProvider = peer.GetPattern(PatternInterface.Toggle) as IToggleProvider;
-			if (toggleProvider != null) toggleProvider.Toggle();
-		}
-
-		public DelegateCommand Push { get; private set; }
-
-		private readonly ToggleButton _tb;
-		public ToggleAutomation(ToggleButton tb)
-		{
-			_tb = tb;
-			Push = new DelegateCommand(_push);
-		}
-	}
 }
