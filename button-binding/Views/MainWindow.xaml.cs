@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Data;
 using button_binding.ViewModels;
 using ObservableControls;
 

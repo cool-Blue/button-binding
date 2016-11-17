@@ -30,25 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlAutomation">
+      <HintPath>..\..\..\WPF\Class Lib\ControlAutomation\bin\Debug\ControlAutomation.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Xaml" />
-    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buttons.cs" />
     <Compile Include="Observable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ControlAutomation\ControlAutomation.csproj">
-      <Project>{E8276341-0BF1-4D68-9742-C8720AC81DA9}</Project>
-      <Name>ControlAutomation</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

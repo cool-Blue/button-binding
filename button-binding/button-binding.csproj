@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlAutomation">
+      <HintPath>..\..\..\WPF\Class Lib\ControlAutomation\bin\Debug\ControlAutomation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -94,10 +97,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ControlAutomation\ControlAutomation.csproj">
-      <Project>{E8276341-0BF1-4D68-9742-C8720AC81DA9}</Project>
-      <Name>ControlAutomation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ObservableControls\ObservableControls.csproj">
       <Project>{98aa57a2-f6e3-443b-b5a2-252b293471c8}</Project>
       <Name>ObservableControls</Name>
