@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using ButtonBindingViewModel;
-using ObservableControls;
+using button_binding.ViewModels;
 
-namespace button_binding
+namespace button_binding.Views
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml

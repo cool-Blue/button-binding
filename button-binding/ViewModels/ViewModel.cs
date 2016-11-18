@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls.Primitives;
-using ObservableControls;
+using ControlAutomation;
 
-namespace ButtonBindingViewModel
+namespace button_binding.ViewModels
 {
 	/// <summary>
 	/// mock model
