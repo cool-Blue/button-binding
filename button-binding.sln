@@ -7,10 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "button-binding", "button-bi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{82BA4C8B-73EE-4B37-91B8-86D7A704FC12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlAutomation", "..\..\WPF\Class Lib\ControlAutomation\ControlAutomation.csproj", "{E8276341-0BF1-4D68-9742-C8720AC81DA9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binding", "..\..\WPF\Class Lib\Binding\Binding.csproj", "{A09D71C0-623D-469A-86F0-AA8DF97B41DC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,14 +18,6 @@ Global
 		{105D5B15-F9EA-4B9A-A7A4-C7F4124CC936}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{105D5B15-F9EA-4B9A-A7A4-C7F4124CC936}.Release|Any CPU.Build.0 = Release|Any CPU
 		{105D5B15-F9EA-4B9A-A7A4-C7F4124CC936}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{E8276341-0BF1-4D68-9742-C8720AC81DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8276341-0BF1-4D68-9742-C8720AC81DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8276341-0BF1-4D68-9742-C8720AC81DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8276341-0BF1-4D68-9742-C8720AC81DA9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A09D71C0-623D-469A-86F0-AA8DF97B41DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A09D71C0-623D-469A-86F0-AA8DF97B41DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A09D71C0-623D-469A-86F0-AA8DF97B41DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A09D71C0-623D-469A-86F0-AA8DF97B41DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

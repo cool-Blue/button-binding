@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using button_binding.ViewModels;
+using ContentToggleButton;
 
 namespace button_binding.Views
 {
