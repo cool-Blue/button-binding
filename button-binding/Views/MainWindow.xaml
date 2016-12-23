@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:c="clr-namespace:Binding.converters;assembly=Binding"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="182" Width="525">
     <Window.Resources>
         <ResourceDictionary>
 
@@ -23,7 +23,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <StackPanel>
-        <StackPanel Margin="100,100,100,0" Orientation="Vertical" HorizontalAlignment="Stretch">
+        <StackPanel Margin="30,30,30,0" Orientation="Vertical" HorizontalAlignment="Stretch">
             <ToggleButton x:Name="button0"
                     Content="{Binding Button0.Options, RelativeSource={StaticResource View}}"  
                       Style="{DynamicResource ToggleButtonStyle}" 
@@ -32,15 +32,15 @@
                     Content="{Binding Button1.Options, RelativeSource={StaticResource View}}"
                       Style="{DynamicResource ToggleButtonStyle}" 
                       Template="{DynamicResource ToggleButtonControlTemplate1}"/>
-            <ToggleButton Name="button2"
-                    Content="{Binding Button2.Options, RelativeSource={StaticResource View}}"
-                      Style="{DynamicResource ToggleButtonStyle}" 
-                      Template="{DynamicResource ToggleButtonControlTemplate1}"/>
-            <Button Content="{Binding ModelButton.Options, RelativeSource={StaticResource View}}" 
-                    Command="{Binding TargetButton.Push}" 
-                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
-                      Style="{DynamicResource ToggleButtonStyle}" 
-                      Template="{DynamicResource ToggleButtonControlTemplate1}"/>
+<ToggleButton Name="button2"
+        Content="{Binding Button2.Options, RelativeSource={StaticResource View}}"
+            Style="{DynamicResource ToggleButtonStyle}" 
+            Template="{DynamicResource ToggleButtonControlTemplate1}"/>
+<Button Content="{Binding ModelButton.Options, RelativeSource={StaticResource View}}" 
+        Command="{Binding TargetButton.Push}" 
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self}}"
+            Style="{DynamicResource ToggleButtonStyle}" 
+            Template="{DynamicResource ToggleButtonControlTemplate1}"/>
         </StackPanel>
     </StackPanel>
 </Window>

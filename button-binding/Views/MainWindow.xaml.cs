@@ -21,7 +21,7 @@ namespace button_binding.Views
 		public MainWindow ()
 		{
 			// build the view
-			Button0 = new StaticButton(new List<string> { "Paused", "Logging" }, false);
+			Button0 = new StaticButton(new List<string> { null, "Logging" }, false);
 			Button1 = new StaticButton(new List<string> { "Paused", "Logging" }, false);
 			Button2 = new StaticButton(new List<string> { "Log All", "Log VBA" }, false);
 			ModelButton = new StaticButton(new List<string> { "MODEL", "MODEL" }, false);
